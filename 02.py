@@ -29,10 +29,10 @@ from matplotlib.pyplot import figure
 import scipy.ndimage as ndi
 from numpy.fft import fft2, ifft2
 g =  io.imread(r'/content/drive/MyDrive/gull_gray.png')
-
 #圖片的列行平面數
 x, y = g.shape
 t = np.zeros((x,y,10))
+
 #鹽和胡椒雜訊7%
 #gaussian:高斯雜訊，白雜訊的理想化形式，頻道沒調好的電視
 #t=10張進行高斯雜訊的g，每張都不一樣
@@ -54,21 +54,15 @@ array([[1.,  1.],
        [1.,  1.]])
 '''
 m = np.ones((10,1))/10
+#增加動態模糊
 cm = ndi.correlate(cr,m)
-#去除動態模糊
-
-
-
 #zeros_like m*n elements=0
 m2 = np.zeros_like(cr) * 1.0
 m2[0:10, 0:1] = m
 mf2 = fft2(m2)
 
 d = 0.02
-
-
 #d越大白色越多
-
 mf2[np.where(abs(mf2)<d)] = 1
 bmi2 = abs(ifft2(fft2(cm)/mf2))
 
