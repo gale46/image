@@ -15,8 +15,10 @@ s2 = np.zeros_like(s)
 ss = io.imread(r'/content/drive/MyDrive/Untitled Folder/color_sunset.png')
 
 #加強對比
+#將三維矩陣的每一層進行加強
 for i in range(3):
   s2[:,:,i] = equalize_hist(s[:,:,i])
+ 
 '''
 figure(), io.imshow(ss)
 figure(), io.imshow(s2)
