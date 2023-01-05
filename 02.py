@@ -64,8 +64,9 @@ mf2 = fft2(m2)
 d = 0.02
 #d越大白色越多
 mf2[np.where(abs(mf2)<d)] = 1
+#去除模糊影像
+#影像傅立葉除以濾波器傅立葉
 bmi2 = abs(ifft2(fft2(cm)/mf2))
-
 figure(),io.imshow(cm)
 figure(),io.imshow(bmi2/bmi2.max(), vmax=0.2, vmin=0)
 io.show()
