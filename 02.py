@@ -1,3 +1,4 @@
+'''
 import skimage.io as io
 import skimage.util.noise as noise
 import numpy as np
@@ -65,4 +66,3 @@ bmi2 = abs(ifft2(fft2(cm)/mf2))
 figure(),io.imshow(cm)
 figure(),io.imshow(bmi2/bmi2.max(), vmax=0.2, vmin=0)
 io.show()
-'''
