@@ -16,6 +16,9 @@ ss = io.imread(r'/content/drive/MyDrive/Untitled Folder/color_sunset.png')
 
 #加強對比
 #將三維矩陣的每一層進行加強
+#0->B通道所有灰度值为0
+#1->使G通道所有灰度值为0
+#2->使R通道所有灰度值为0
 for i in range(3):
   s2[:,:,i] = equalize_hist(s[:,:,i])
  
